@@ -25,10 +25,10 @@ HTML_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel Summarizer - Smart Data Analysis</title>
+    <title>Cellence - Gig4ce</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -39,16 +39,23 @@ HTML_TEMPLATE = """
             --glass-border: rgba(148, 163, 184, 0.18);
             --shadow-soft: 0 10px 30px -10px rgba(0,0,0,.35);
             --shadow-strong: 0 20px 60px -20px rgba(0,0,0,.45);
-            --accent-start: #60a5fa; /* blue-400 */
-            --accent-end: #a78bfa;   /* violet-400 */
+            --accent-start: #3b82f6; /* blue-500 */
+            --accent-end: #6366f1;   /* indigo-500 */
         }
 
-        html, body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+        html, body { font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+
+        /* Site-wide dark background aligned with app theme */
+        .page-bg {
+            background-color: #050a1a; /* darker navy */
+            background-image: radial-gradient(1200px 600px at 50% -10%, rgba(30,58,138,0.12), transparent 60%);
+            background-repeat: no-repeat;
+        }
 
         .drag-over { border-color: #3b82f6; background-color: #1e40af20; transform: scale(1.02); }
         .loading { opacity: 0.6; pointer-events: none; }
         .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); }
+        .hero-gradient { background: linear-gradient(135deg, #050a1a 0%, #0f1e3d 50%, #050a1a 100%); }
         .card-hover { transition: all 0.3s ease; }
         .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
         .animate-float { animation: float 3s ease-in-out infinite; }
@@ -57,9 +64,9 @@ HTML_TEMPLATE = """
         /* Permanent ambient animations */
         .animated-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
         .bg-blob { position: absolute; border-radius: 9999px; filter: blur(80px); opacity: .25; mix-blend-mode: screen; }
-        .blob-1 { width: 36rem; height: 36rem; left: -10rem; top: -8rem; background: radial-gradient(circle at 30% 30%, #60a5fa, transparent 60%); animation: floatSlow 22s ease-in-out infinite; }
-        .blob-2 { width: 28rem; height: 28rem; right: -8rem; top: 10rem; background: radial-gradient(circle at 70% 30%, #a78bfa, transparent 60%); animation: floatSlow 26s ease-in-out infinite reverse; }
-        .blob-3 { width: 32rem; height: 32rem; left: 20%; bottom: -10rem; background: radial-gradient(circle at 50% 50%, #34d399, transparent 60%); animation: floatSlow 24s ease-in-out infinite; }
+        .blob-1 { width: 36rem; height: 36rem; left: -10rem; top: -8rem; background: radial-gradient(circle at 30% 30%, #3b82f6, transparent 60%); animation: floatSlow 22s ease-in-out infinite; }
+        .blob-2 { width: 28rem; height: 28rem; right: -8rem; top: 10rem; background: radial-gradient(circle at 70% 30%, #6366f1, transparent 60%); animation: floatSlow 26s ease-in-out infinite reverse; }
+        .blob-3 { width: 32rem; height: 32rem; left: 20%; bottom: -10rem; background: radial-gradient(circle at 50% 50%, #60a5fa, transparent 60%); animation: floatSlow 24s ease-in-out infinite; }
         @keyframes floatSlow { 0%, 100% { transform: translateY(0) translateX(0) scale(1); } 50% { transform: translateY(-16px) translateX(10px) scale(1.03); } }
 
         /* Reveal on scroll */
@@ -79,13 +86,13 @@ HTML_TEMPLATE = """
         /* Buttons */
         .btn{ display:inline-flex; align-items:center; justify-content:center; border-radius: 9999px; padding: .875rem 1.25rem; font-weight: 600; transition: all .25s ease; }
         .btn:focus-visible{ outline: none; box-shadow: 0 0 0 3px rgba(99,102,241,.35); }
-        .btn-primary{ color: #0b1020; background: linear-gradient(135deg, var(--accent-start), var(--accent-end)); }
-        .btn-primary:hover{ filter: brightness(1.08); transform: translateY(-1px); }
+        .btn-primary{ color: #0b1020; background: #B7C3F3; }
+        .btn-primary:hover{ filter: brightness(0.96); transform: translateY(-1px); }
         .btn-outline{ color: #fff; border: 2px solid rgba(255,255,255,.9); }
         .btn-outline:hover{ background: rgba(255,255,255,.9); color: #4c1d95; transform: translateY(-1px); }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white min-h-screen">
+<body class="page-bg text-white min-h-screen">
     <!-- Animated background blobs -->
     <div class="animated-bg">
         <div class="bg-blob blob-1"></div>
@@ -93,18 +100,18 @@ HTML_TEMPLATE = """
         <div class="bg-blob blob-3"></div>
     </div>
     <!-- Navigation -->
-    <nav class="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4">
+    <nav class="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50 text-sm">
+        <div class="max-w-7xl mx-auto px-6 py-2">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-chart-line text-white text-xl"></i>
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white text-lg"></i>
                     </div>
-                    <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                        Excel Summarizer
+                    <span class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        Gigforce
                     </span>
                 </div>
-                <div class="hidden md:flex items-center space-x-6">
+                <div class="hidden md:flex items-center space-x-4">
                     <a href="#features" class="text-slate-300 hover:text-white transition-colors">Features</a>
                     <a href="#how-it-works" class="text-slate-300 hover:text-white transition-colors">How it Works</a>
                     <a href="#upload" class="text-slate-300 hover:text-white transition-colors">Upload</a>
@@ -114,14 +121,17 @@ HTML_TEMPLATE = """
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-gradient py-20 px-6">
+    <section class="hero-gradient min-h-screen flex items-center px-6 pt-28 pb-16">
         <div class="max-w-7xl mx-auto text-center">
             <div class="animate-float mb-8 reveal" data-animate>
                 <i class="fas fa-chart-pie text-6xl text-white/90"></i>
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent reveal" data-animate>
-                Smart Excel Analysis
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 uppercase tracking-widest bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent reveal" data-animate>
+                Cellence
             </h1>
+            <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto reveal" data-animate>
+                Cell + Excellence
+            </p>
             <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto reveal" data-animate>
                 Transform your Excel data into actionable insights with instant client-wise and zone-wise summaries
             </p>
@@ -300,15 +310,12 @@ HTML_TEMPLATE = """
                 <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                     <i class="fas fa-chart-line text-white"></i>
                 </div>
-                <span class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                    Excel Summarizer
-                </span>
+                <a href="https://gigforce.in/" target="_blank" rel="noopener" class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Gigforce
+                </a>
             </div>
             <p class="text-slate-400 mb-6 max-w-2xl mx-auto"></p>
-            <div class="flex justify-center space-x-6 text-slate-400">
-                <a href="https://github.com/RANVIJAY-TOMAR" target="_blank" rel="noopener" class="hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
-                <a href="https://www.linkedin.com/in/ranvijay-singh-58182a325?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener" class="hover:text-white transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
-            </div>
+            <div class="flex justify-center space-x-6 text-slate-400"></div>
         </div>
     </footer>
 
@@ -431,6 +438,32 @@ HTML_TEMPLATE = """
             // Smooth scroll to results
             results.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+
+        // Force-download handler for the report button with graceful fallback
+        downloadBtn.addEventListener('click', async (e) => {
+            const href = downloadBtn.getAttribute('href') || '';
+            if (!href || href === '#') return;
+            e.preventDefault();
+            try {
+                const res = await fetch(href);
+                if (!res.ok) throw new Error(`Download failed (${res.status})`);
+                const blob = await res.blob();
+                const cd = res.headers.get('content-disposition') || '';
+                let name = 'report.xlsx';
+                const match = cd.match(/filename\\*=UTF-8''([^;]+)|filename="?([^";]+)"?/i);
+                if (match) name = decodeURIComponent(match[1] || match[2]);
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = name;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                setTimeout(() => URL.revokeObjectURL(a.href), 0);
+            } catch (_) {
+                // Fallback: let the browser handle the attachment
+                window.location.assign(href);
+            }
+        });
 
         function initFilters(rows){
             const zones = new Set();
@@ -749,7 +782,6 @@ def upload():
     # Build an Excel report in-memory
     bio = io.BytesIO()
     with pd.ExcelWriter(bio, engine="openpyxl") as writer:
-        df.to_excel(writer, index=False, sheet_name="Raw")
         cd = client_df.copy(); zd = zone_df.copy()
         for d in (cd, zd):
             if "Completion%" in d.columns:

@@ -116,25 +116,7 @@ export default function App(){
         )}
       </div>
 
-      <footer className="mt-12 text-center text-slate-500 text-xs">
-        <a
-          href="https://github.com/RANVIJAY-TOMAR"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-slate-400 hover:text-slate-200 underline underline-offset-4"
-        >
-          GitHub
-        </a>
-        <span className="mx-2 text-slate-600">·</span>
-        <a
-          href="https://www.linkedin.com/in/ranvijay-singh-58182a325?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-slate-400 hover:text-slate-200 underline underline-offset-4"
-        >
-          LinkedIn
-        </a>
-      </footer>
+      <footer className="mt-12 text-center text-slate-500 text-xs"></footer>
     </div>
   )
 }
