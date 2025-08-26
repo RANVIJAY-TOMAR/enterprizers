@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+/* Inter font loading with system fallbacks */
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter'), url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtU.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 antialiased selection:bg-brand-500/30 selection:text-white;
+  background-image: theme('backgroundImage.radial-soft');
+  background-repeat: no-repeat;
+}
+
+/* Glassmorphism utility */
+.glass {
+  @apply bg-slate-900/60 backdrop-blur-xl border border-slate-800/70 shadow-soft;
+}
+
+/* Card hover subtle elevation */
+.elevate:hover {
+  box-shadow: 0 12px 40px -16px rgba(0,0,0,0.7);
+}
+
+/* Shimmer utility for loading placeholders */
+.shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
